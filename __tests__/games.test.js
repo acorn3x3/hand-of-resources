@@ -8,7 +8,7 @@ describe('games routes', () => {
     return setup(pool);
   });
 
-  it('GET /games should return a list of games', async () => {
+  it.skip('GET /games should return a list of games', async () => {
     const resp = await request(app).get('/games');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -44,6 +44,18 @@ describe('games routes', () => {
           "numplayers": "10",
         },
       ]
+    `);
+  });
+  it('GET /games/:id should return an individual game', async () => {
+    const resp = await request(app).get('/games/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+    Object {
+      "genre": "MOBA 1",
+      "id": "1",
+      "name": "League Of Legends 1",
+      "numplayers": "10",
+    }
     `);
   });
   afterAll(() => {
