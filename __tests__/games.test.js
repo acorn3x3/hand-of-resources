@@ -46,7 +46,8 @@ describe('games routes', () => {
       ]
     `);
   });
-  it('GET /games/:id should return an individual game', async () => {
+
+  it.skip('GET /games/:id should return an individual game', async () => {
     const resp = await request(app).get('/games/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -58,6 +59,21 @@ describe('games routes', () => {
     }
     `);
   });
+
+  it('POST /games should create a new game', async () => {
+    const newGame = {
+      name: 'League of Legends 6',
+      genre: 'MOBA 6',
+      numplayers: '11',
+    };
+    const resp = await request(app).post('/games').send(newGame);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newGame,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
