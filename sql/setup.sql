@@ -6,16 +6,18 @@ CREATE TABLE games (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR NOT NULL,
     genre VARCHAR NOT NULL,
+    numplayers VARCHAR NOT NULL
 );
 
-INSERT INTO games(
+INSERT INTO games (
     name,
-    genre
+    genre,
+    numplayers
 )
 
 VALUES
-('League Of Legends 1', 'MOBA 1'),
-('League Of Legends 2', 'MOBA 2'),
-('League Of Legends 3', 'MOBA 3'),
-('League Of Legends 4', 'MOBA 4'),
-('League Of Legends 5', 'MOBA 5');
+('League Of Legends 1', 'MOBA 1', '10'),
+('League Of Legends 2', 'MOBA 2', '10'),
+('League Of Legends 3', 'MOBA 3', '10'),
+('League Of Legends 4', 'MOBA 4', '10'),
+('League Of Legends 5', 'MOBA 5', '10');
