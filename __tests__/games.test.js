@@ -60,7 +60,7 @@ describe('games routes', () => {
     `);
   });
 
-  it('POST /games should create a new game', async () => {
+  it.skip('POST /games should create a new game', async () => {
     const newGame = {
       name: 'League of Legends 6',
       genre: 'MOBA 6',
@@ -72,6 +72,14 @@ describe('games routes', () => {
       id: expect.any(String),
       ...newGame,
     });
+  });
+  it('PUT /games/:id should update an existing game', async () => {
+    const resp = await request(app).put('/games/1').send({
+      numplayers: '12',
+    });
+    console.log(resp.body);
+    expect(resp.status).toBe(200);
+    expect(resp.body.numplayers).toBe('12');
   });
 
   afterAll(() => {
