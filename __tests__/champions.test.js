@@ -46,7 +46,7 @@ describe('champion routes', () => {
       ]
     `);
   });
-  it('GET /champions/:id should return an individual champion', async () => {
+  it.skip('GET /champions/:id should return an individual champion', async () => {
     const res = await request(app).get('/champions/1');
     expect(res.status).toBe(200);
     expect(res.body).toMatchInlineSnapshot(`
@@ -57,6 +57,19 @@ describe('champion routes', () => {
         "role": "Fighter",
       }
     `);
+  });
+  it('POST /champions should create a new champion', async () => {
+    const newChamp = {
+      name: 'Shen',
+      role: 'Bruiser',
+      lane: 'Top',
+    };
+    const res = await request(app).post('/champions').send(newChamp);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newChamp,
+    });
   });
 
   afterAll(() => {
