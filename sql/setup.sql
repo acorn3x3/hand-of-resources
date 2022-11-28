@@ -21,3 +21,26 @@ VALUES
 ('League Of Legends 3', 'MOBA 3', '10'),
 ('League Of Legends 4', 'MOBA 4', '10'),
 ('League Of Legends 5', 'MOBA 5', '10');
+
+DROP TABLE IF EXISTS champions;
+
+CREATE TABLE champions (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    role VARCHAR NOT NULL,
+    lane VARCHAR NOT NULL
+);
+
+INSERT INTO champions (
+    name,
+    role,
+    lane
+)
+
+VALUES
+('Aatrox', 'Fighter', 'Top'),
+('Belveth', 'Split Pusher', 'Jungle'),
+('Caitlyn', 'Sniper', 'Bot'),
+('Diana', 'Mage', 'Mid'),
+('Ekko', 'Assassin', 'Support');
+

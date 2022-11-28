@@ -73,13 +73,25 @@ describe('games routes', () => {
       ...newGame,
     });
   });
-  it('PUT /games/:id should update an existing game', async () => {
+  it.skip('PUT /games/:id should update an existing game', async () => {
     const resp = await request(app).put('/games/1').send({
       numplayers: '12',
     });
-    console.log(resp.body);
     expect(resp.status).toBe(200);
     expect(resp.body.numplayers).toBe('12');
+  });
+
+  it.skip('GET /games/xyz should return a 404', async () => {
+    const resp = await request(app).get('/games/456');
+    expect(resp.status).toBe(404);
+  });
+
+  it.skip('DELETE /games/1 should delete a game #1', async () => {
+    const resp = await request(app).delete('/games/1');
+    expect(resp.status).toBe(204);
+
+    const getResp = await request(app).get('/games/1');
+    expect(getResp.status).toBe(404);
   });
 
   afterAll(() => {
