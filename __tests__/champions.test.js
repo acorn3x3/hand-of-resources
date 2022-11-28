@@ -58,7 +58,7 @@ describe('champion routes', () => {
       }
     `);
   });
-  it('POST /champions should create a new champion', async () => {
+  it.skip('POST /champions should create a new champion', async () => {
     const newChamp = {
       name: 'Shen',
       role: 'Bruiser',
@@ -70,6 +70,14 @@ describe('champion routes', () => {
       id: expect.any(String),
       ...newChamp,
     });
+  });
+  it('PUT /champions/:id should update an existing champion', async () => {
+    const res = await request(app).put('/champions/1').send({
+      role: 'Drain Tank',
+    });
+    console.log(res.body);
+    expect(res.status).toBe(200);
+    expect(res.body.role).toBe('Drain Tank');
   });
 
   afterAll(() => {
