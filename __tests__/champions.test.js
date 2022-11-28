@@ -80,7 +80,7 @@ describe('champion routes', () => {
     expect(res.body.role).toBe('Drain Tank');
   });
 
-  it('DELETE /champions/1 should delete a champion #1', async () => {
+  it.skip('DELETE /champions/1 should delete a champion #1', async () => {
     const resp = await request(app).delete('/champions/1');
     expect(resp.status).toBe(200);
 
