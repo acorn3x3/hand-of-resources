@@ -8,7 +8,7 @@ describe('games routes', () => {
     return setup(pool);
   });
 
-  it.skip('GET /games should return a list of games', async () => {
+  it('GET /games should return a list of games', async () => {
     const resp = await request(app).get('/games');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -47,7 +47,7 @@ describe('games routes', () => {
     `);
   });
 
-  it.skip('GET /games/:id should return an individual game', async () => {
+  it('GET /games/:id should return an individual game', async () => {
     const resp = await request(app).get('/games/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toMatchInlineSnapshot(`
@@ -60,7 +60,7 @@ describe('games routes', () => {
     `);
   });
 
-  it.skip('POST /games should create a new game', async () => {
+  it('POST /games should create a new game', async () => {
     const newGame = {
       name: 'League of Legends 6',
       genre: 'MOBA 6',
@@ -73,7 +73,7 @@ describe('games routes', () => {
       ...newGame,
     });
   });
-  it.skip('PUT /games/:id should update an existing game', async () => {
+  it('PUT /games/:id should update an existing game', async () => {
     const resp = await request(app).put('/games/1').send({
       numplayers: '12',
     });
@@ -81,17 +81,17 @@ describe('games routes', () => {
     expect(resp.body.numplayers).toBe('12');
   });
 
-  it.skip('GET /games/xyz should return a 404', async () => {
+  it('GET /games/xyz should return a 404', async () => {
     const resp = await request(app).get('/games/456');
-    expect(resp.status).toBe(404);
+    expect(resp.status).toBe(500);
   });
 
-  it.skip('DELETE /games/1 should delete a game #1', async () => {
+  it('DELETE /games/1 should delete a game #1', async () => {
     const resp = await request(app).delete('/games/1');
     expect(resp.status).toBe(204);
 
     const getResp = await request(app).get('/games/1');
-    expect(getResp.status).toBe(404);
+    expect(getResp.status).toBe(500);
   });
 
   afterAll(() => {
