@@ -44,3 +44,24 @@ VALUES
 ('Diana', 'Mage', 'Mid'),
 ('Ekko', 'Assassin', 'Support');
 
+DROP TABLE IF EXISTS regions;
+
+CREATE TABLE regions(
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    biome VARCHAR NOT NULL,
+    location VARCHAR NOT NULL
+);
+
+INSERT INTO regions(
+    name,
+    biome,
+    location
+)
+
+VALUES
+('Demacia', 'Plains', 'West '),
+('Freiljord', 'Tundra', 'North'),
+('Ionia', 'Forrest', 'East'),
+('Bilgewater', 'Islands', 'South'),
+('Targon', 'Mountains', 'Southwest');
